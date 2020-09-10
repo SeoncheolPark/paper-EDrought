@@ -1,0 +1,113 @@
+---
+title: "Untitled"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(knitr)
+library(shiny)
+setwd("~/Dropbox/앱/ShareLaTeX/(Park)EDrought/")
+#Column {data-width=650}
+#Column {.sidebar}
+```
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+Proposed: The proposed conditional spatial extreme modeling with nonlinear regresseion based parameter function selection
+
+H-T: Heffernan and Tawn (2004) model
+
+Raw: Mean value
+
+Output: Predicted conditional extreme SPEI values
+
+```{r}
+selectInput("region", label = "Choose the study region:",
+            choices = c("(a)All", "(b)Palliser", "(c)BC", "(d)Central", "(e)East", "(f)Northern"), selected = "(c)BC")
+```
+
+Row {.tabset .tabset-fade}
+-----------------------------------------------------------------------
+
+### Proposed
+
+```{r}
+renderImage({
+  if(input$region=="(a)All"){
+    #filename <- normalizePath(file.path('~/Dropbox/앱/ShareLaTeX/(Park)EDrought/images', 'PalliserModelnonlinear2.png'))
+  }else if(input$region=="(b)Palliser"){
+    filename <- normalizePath(file.path('~/Dropbox/앱/ShareLaTeX/(Park)EDrought/images', 'PalliserModelnonlinear2.png'))
+  }else if(input$region=="(c)BC"){
+    filename <- normalizePath(file.path('~/Dropbox/앱/ShareLaTeX/(Park)EDrought/images', 'BCModelnonlinear.png'))
+    list(src=filename)
+  }else if(input$region=="(d)Central"){
+    filename <- normalizePath(file.path('~/Dropbox/앱/ShareLaTeX/(Park)EDrought/images', 'CentralModelnonlinear.png'))
+    list(src=filename)
+  }else if(input$region=="(e)East"){
+    filename <- normalizePath(file.path('~/Dropbox/앱/ShareLaTeX/(Park)EDrought/images', 'EastModelnonlinear.png'))
+    list(src=filename)
+  }else if(input$region=="(f)Northern"){
+    filename <- normalizePath(file.path('~/Dropbox/앱/ShareLaTeX/(Park)EDrought/images', 'NorthModelnonlinear.png'))
+    list(src=filename)
+  }
+}, deleteFile=FALSE)
+
+```
+
+### H-T
+
+```{r}
+renderImage({
+  if(input$region=="(a)All"){
+    #filename <- normalizePath(file.path('~/Dropbox/앱/ShareLaTeX/(Park)EDrought/images', 'PalliserModelnonlinear2.png'))
+  }else if(input$region=="(b)Palliser"){
+    filename <- normalizePath(file.path('~/Dropbox/앱/ShareLaTeX/(Park)EDrought/images', 'PalliserModelHT.png'))
+    list(src=filename)
+  }else if(input$region=="(c)BC"){
+    filename <- normalizePath(file.path('~/Dropbox/앱/ShareLaTeX/(Park)EDrought/images', 'BCModelHT.png'))
+    list(src=filename)
+  }else if(input$region=="(d)Central"){
+    filename <- normalizePath(file.path('~/Dropbox/앱/ShareLaTeX/(Park)EDrought/images', 'CentralModelHT.png'))
+    list(src=filename)
+  }else if(input$region=="(e)East"){
+    filename <- normalizePath(file.path('~/Dropbox/앱/ShareLaTeX/(Park)EDrought/images', 'EastModelHT.png'))
+    list(src=filename)
+  }else if(input$region=="(f)Northern"){
+    filename <- normalizePath(file.path('~/Dropbox/앱/ShareLaTeX/(Park)EDrought/images', 'NorthModelHT.png'))
+    list(src=filename)
+  }
+}, deleteFile=FALSE)
+
+```
+
+### Raw
+
+```{r}
+renderImage({
+  if(input$region=="(a)All"){
+    #filename <- normalizePath(file.path('~/Dropbox/앱/ShareLaTeX/(Park)EDrought/images', 'PalliserModelnonlinear2.png'))
+  }else if(input$region=="(b)Palliser"){
+   # filename <- normalizePath(file.path('~/Dropbox/앱/ShareLaTeX/(Park)EDrought/images', 'PalliserModelnonlinear2.png'))
+  }else if(input$region=="(c)BC"){
+    filename <- normalizePath(file.path('~/Dropbox/앱/ShareLaTeX/(Park)EDrought/images', 'BCModelraw.png'))
+    list(src=filename)
+  }else if(input$region=="(d)Central"){
+    filename <- normalizePath(file.path('~/Dropbox/앱/ShareLaTeX/(Park)EDrought/images', 'CentralModelraw.png'))
+    list(src=filename)
+  }else if(input$region=="(e)East"){
+    filename <- normalizePath(file.path('~/Dropbox/앱/ShareLaTeX/(Park)EDrought/images', 'EastModelraw.png'))
+    list(src=filename)
+  }else if(input$region=="(f)Northern"){
+    filename <- normalizePath(file.path('~/Dropbox/앱/ShareLaTeX/(Park)EDrought/images', 'NorthModelraw.png'))
+    list(src=filename)
+  }
+}, deleteFile=FALSE)
+
+```
+
